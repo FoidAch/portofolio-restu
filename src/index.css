@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* =========================================================
+   Tema Coastal + Neo-Brutalism
+   - warna laut tropis + pasir hangat
+   - tipografi monospace tegas
+   - drop-shadow solid 4px ala brutalism
+   ========================================================= */
+
+@theme {
+  --color-pasir-50:  #fdf6e3;
+  --color-pasir-100: #f8e9c4;
+  --color-pasir-200: #f0d49a;
+  --color-pasir-300: #e9b86a;
+  --color-pasir-400: #d99a3f;
+  --color-pasir-500: #b87521;
+
+  --color-laut-50:  #e6f4f8;
+  --color-laut-100: #b8e0ec;
+  --color-laut-200: #7cc1d8;
+  --color-laut-300: #3b9fbf;
+  --color-laut-400: #1a7a9d;
+  --color-laut-500: #0a3a5c;
+  --color-laut-600: #062a44;
+  --color-laut-700: #041d31;
+
+  --color-koral-400: #ff6b5a;
+  --color-koral-500: #e54a3a;
+  --color-palma-500: #2f7a3a;
+
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular,
+               Menlo, Monaco, Consolas, "Courier New", monospace;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+}
+
+html, body {
+  background: var(--color-pasir-50);
+  color: var(--color-laut-700);
+  font-family: var(--font-display);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(124,193,216,0.15) 0, transparent 40%),
+    radial-gradient(circle at 85% 100%, rgba(255,107,90,0.08) 0, transparent 40%);
+}
+
+/* helper class untuk shadow solid ala brutalism */
+.shadow-brutal       { box-shadow: 6px 6px 0 0 var(--color-laut-700); }
+.shadow-brutal-sm    { box-shadow: 3px 3px 0 0 var(--color-laut-700); }
+.shadow-brutal-pasir { box-shadow: 6px 6px 0 0 var(--color-pasir-500); }
+.shadow-brutal-koral { box-shadow: 6px 6px 0 0 var(--color-koral-500); }
+
+.hover-lift {
+  transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+}
+.hover-lift:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 0 var(--color-laut-700);
+}
+.hover-lift:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--color-laut-700);
+}
+
+/* garis tepi tebal ala brutalism */
+.border-brutal       { border: 3px solid var(--color-laut-700); }
+.border-brutal-thick { border: 4px solid var(--color-laut-700); }
+
+/* font utilities */
+.font-mono-tight { font-family: var(--font-mono); letter-spacing: -0.02em; }
+.font-display    { font-family: var(--font-display); }
+
+/* animasi ringan */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+.anim-float { animation: float-y 4s ease-in-out infinite; }
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.anim-spin-slow { animation: spin-slow 18s linear infinite; }
